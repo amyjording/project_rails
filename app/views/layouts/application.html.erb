@@ -8,7 +8,19 @@
 </head>
 <body>
 <p class="flash"><%= flash.notice %></p>
+
 <%= yield %>
+<%= yield :sidebar %>
+    <hr>
+    <h6>
+      <% if logged_in? %>
+        <%= "Logged in as #{current_user.email}" %>
+        <%= link_to "(logout)", logout_path %>
+      <% else %>
+        <%= link_to "(login)", login_path %>
+      <% end %>
+    </h6>
+    <link rel="alternate" type="application/rss+xml" title="Codingfish RSS Feed" href="https://www.codingfish.com/feed?format=rss">
 
 </body>
 </html>

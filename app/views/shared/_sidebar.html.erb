@@ -1,0 +1,20 @@
+
+  <div id="sidebar"><p><%= link_to "All Articles", articles_path %><br />
+  <%= link_to "All Authors", authors_path %></p>
+
+  <h5>3 Most Popular Articles</h5>
+<p>  <% @top_3_articles.each do |article| %>
+  <li>
+    <%= link_to article.title, article_path(article) %>
+  </li>
+    <% end %>
+</p>
+<p>
+  <% @article_months.sort.each do |pub, articles| %>
+  	<h3><%= pub.strftime('%B') %></h3>
+  		<% for article in articles %>
+      <%= link_to article.title, article_path(article).first(3) %></li>
+  		<% end %>
+  	<% end %>
+</p>
+  </div>
